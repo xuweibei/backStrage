@@ -2,7 +2,7 @@
 const hrefCfg = {
     // 测境
     dev: {
-        apiPath: 'https://tbk.zzha.vip/app/index.php?i=3&t=0&v=9.2.0&from=wxapp&c=entry&a=wxapp&&m=hc_pdd&do=',
+        apiPath: 'https://csapi.zzha.vip/shopapp/',
         apiShopPath: '',
         scan: ''
     },
@@ -35,6 +35,5 @@ const currentHref = (function () {
     }
     return url;
 }());
-
 
 export {currentHref, hrefCfg};

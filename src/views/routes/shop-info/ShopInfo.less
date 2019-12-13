@@ -1,0 +1,84 @@
+.shop-info-container{
+  margin-bottom: 88px;
+  .shop-info-title{
+    background: url('../../../assets/images/bg_dianpu.png') repeat;
+    background-size: 100%;
+    height: 316px;
+    position: relative;
+    text-align: center;
+    img{
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -30px;
+    }
+  }
+  .shop-info-body{
+    background-color: #fff;
+    .shop-info{
+      margin-top: 20px;
+      padding-top: 32px;
+      padding-bottom: 32px;
+      .shop-info-header{
+        text-align: left;
+        font-size: 28px;
+        font-weight: 600;
+        color: #2e2e2e;
+      }
+      .shop-info-content{
+        .shop-info-body-item{
+          height: 112px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          span:nth-child(1){
+            width: 35%;
+          }
+          span:nth-child(2){
+            width: 60%;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            text-align: right;
+          }
+        }
+        .shop-info-body-item:nth-child(2){
+          border-bottom: 1px solid #eee;
+        }
+      }
+      .shop-info-spec{
+        .shop-info-body-item:last-child{
+          flex-direction: column;
+          align-items: flex-start;
+          height: unset;
+          span:nth-child(2){
+            margin-top: 40px;
+            width: 100%;
+            div{
+              display: flex;
+              justify-content: space-between;
+              width: 334px;
+              height: 250.5px;
+              img{
+                width: 100%;
+              }
+            }
+          }
+        }
+        // .shop-info-body-item:nth-last-child(2){
+        //   span:nth-child(2){
+        //     text-overflow: ellipsis;
+        //     overflow: hidden;
+        //     white-space: nowrap;
+        //     width: 80%;
+        //   }
+        // }
+      }
+      .shop-info-rz{
+        .shop-info-body-item:nth-child(2){
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+}

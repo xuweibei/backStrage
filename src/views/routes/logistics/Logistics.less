@@ -1,0 +1,356 @@
+@import "~style";
+
+.logistics {
+    position: relative;
+    .logistics-info-top{
+        position: fixed;
+        top: 50px;
+        width: 100%;
+        padding-left: 40px;
+        padding-right: 40px;
+        .logistics-info-top-container{
+            padding: 40px 24px;
+            height: 144px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            .item{
+                img{
+                    width: 96px;
+                    height: 96px;
+                }
+                .phone-call{
+                    background: url('../../../assets/images/img_lianxi.png') no-repeat;
+                    background-size: 100%;
+                    width: 56px;
+                    height: 56px;
+                    margin: auto;
+                }
+            }
+            .item:nth-child(2){
+                height: 100%;
+                color: #2E2E2E;
+                font-size: 30px;
+                font-weight: bold;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                flex-direction: column;
+                p:nth-child(2){
+                    color: #999;
+                    font-size: 24px;
+                    font-weight: 500;
+                }
+            }
+            .item:nth-child(3){
+                font-size: 22px;
+                color: #999;
+                font-weight: 500;
+                text-align: center;
+            }
+        }
+    }
+    .logistics-info-bot{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        padding-left: 40px;
+        padding-right: 40px;
+        transition: bottom .5s ease;
+        .logistics-info-bot-container{
+            background-color: #fff;
+            padding: 40px 24px;
+            height: 700px;
+            overflow: auto;
+            // height: 180px;
+            .logistics-detail-container{
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                margin-bottom: 32px;
+                &>div{
+                    color: #999;
+                    font-size: 24px;
+                }
+                &>div:nth-child(1){
+                    width: 22%;
+                    p{
+                       text-align: right; 
+                    }
+                }
+                .item-circle{
+                    width: 32px;
+                    height: 32px;
+                    border-radius: 50%;
+                    background-color: #C1C1C1;
+                    position: relative;
+                }
+                .item-circle::after{
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    height: 80px;
+                    border: 1px dashed #999;
+                    left: 16px;
+                    top: 32px;
+                }
+                &>div:nth-child(3){
+                    width: 65%;
+                }
+            }
+            .logistics-detail-container:nth-child(2){
+                &>div{
+                    color: #2e2e2e;
+                }
+                .item-circle{
+                    background: url('../../../assets/images/icon_qianshou.png') no-repeat;
+                    background-size: 100%;
+                    width: 48px;
+                    height: 48px;
+                }
+                .item-circle::after{
+                    left: 24px;
+                    top: 48px;
+                }
+            }
+            .logistics-detail-container:last-child{
+                .item-circle::after{
+                    border: none;
+                }
+            }
+            .received{
+                &>div{
+                    color: #2e2e2e;
+                }
+                .item-circle{
+                    font-size: 22px;
+                    color: #fff !important;
+                    text-align: center;
+                    font-weight: 600;
+                    width: 48px;
+                    height: 48px;
+                    padding-top: 10px;
+                    background:linear-gradient(140deg,rgba(90,159,255,1) 0%,rgba(40,130,255,1) 100%);
+                }
+                .item-circle::after{
+                    left: 24px;
+                    top: 48px;
+                }
+            }
+        }
+        .slide-close{
+            background-color: #fff;
+            text-align: center;
+            font-size: 24px;
+            color: #999;
+            height: 90px;
+            line-height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .slide-close-icon{
+                background: url('../../../assets/images/icon_shouqi.png') no-repeat;
+                background-size: 100%;
+                width: 38px;
+                height: 28px;
+            }
+        }
+    }
+    // .navbar {
+    //     position: fixed;
+    //     top: 0;
+    //     left: 50%;
+    //     transform: translateX(-50%);
+    // }
+
+    // .container {
+    //     position: relative;
+    // }
+    
+
+    // .status {
+    //     display: flex;
+    //     height: 140px;
+    //     width: 660px;
+    //     position: absolute;
+    //     left: 50%;
+    //     transform: translateX(-50%);
+    //     background: @white;
+    //     border: 1px solid #e5e5e5;
+    //     // .hairline('all', #e5e5e5);
+    //     box-shadow: 0 0 30px 0 rgba(255, 87, 116, 0.3);
+    //     border-radius: 20px;
+    //     top: 128px;
+    //     padding: 20px 30px;
+    //     background: @white;
+    //     font-size: 30px;
+    //     color: #333;
+
+    //     .avatar {
+    //         width: 100px;
+    //         height: 100px;
+
+    //         img {
+    //             width: 100px;
+    //             height: 100px;
+    //         }
+    //     }
+
+    //     .info {
+    //         padding: 0;
+    //         margin-left: 30px;
+    //         .info-num{
+    //             width: 350px;
+    //             text-overflow:ellipsis;
+    //             white-space:nowrap;
+    //             font-size: 20px;
+    //         }
+    //         .info-status {
+    //             margin-bottom: 30px;
+    //         }
+    //     }
+
+    //     .phone {
+    //         flex: 0 0 90px;
+    //         display: flex;
+    //         flex-direction: column;
+    //         justify-content: center;
+    //         align-items: center;
+
+    //         .icon-phone:before {
+    //             content: '\e639';
+    //             color: #ff2d51;
+    //         }
+
+    //         .phone-num {
+    //             font-size: 20px;
+    //             color: #000;
+    //             margin-top: 10px;
+    //         }
+    //     }
+    // }
+
+    // .address {
+    //     position: fixed;
+    //     bottom: 0;
+    //     left: 50%;
+    //     transform: translateX(-50%);
+    //     width: 660px;
+    //     //height:153px;
+    //     background: @white;
+    //     border: 1px solid #e5e5e5;
+    //     // .hairline('all', #e5e5e5);
+    //     box-shadow: 0 0 30px 0 rgba(255, 87, 116, 0.3);
+    //     border-radius: 20px 20px 0 0;
+    //     max-height: 800px !important;
+    //     overflow: auto;
+    // }
+
+    // .icon-hand:before {
+    //     content: '\e654';
+    //     color: #ff2d51;
+    // }
+
+    // .icon-hold:before {
+    //     content: '\e658';
+    //     color: red;
+    //     position: absolute;
+    //     right: -10px;
+    //     top: -10px;
+    // }
+
+    // .am-accordion-header{
+    //     height: 160px !important;
+    //     width: 660px !important;
+    //     padding-top: 35px !important;
+    //     box-sizing: border-box !important;
+    // }
+    // .arrow{
+    //     display: none !important;
+    // }
+    // .header-wrapper{
+    //     display: flex;
+    //     height: 125px;
+    //     .header-left{
+    //         flex: 0 0 132px;
+    //         width: 132px;
+    //         border-right: 5px solid #f2f2f2;
+    //         height: 120px;
+    //         margin: 12px 30px 0 0 ;
+    //     }
+    //     .circular {
+    //         width: 22px;
+    //         height: 22px;
+    //         background:#bfbfbf;
+    //         border-radius:50%;
+    //         position: fixed;
+    //         top: 46px;
+    //         left: 148px;
+    //     }
+    //     .header-right{
+    //         flex: 1;
+    //         font-size: 28px;
+    //         color: #333;
+    //         line-height: 42px;
+    //         white-space: initial;
+    //     }
+    // }
+
+    // .am-accordion-header::after {
+    //     height: 0!important;
+    // }
+    // .am-accordion-content {
+    //     width: 660px;
+    // }
+    // .logistics-box {
+    //     height: 176px;
+    //     display: flex;
+    //     justify-content: space-between;
+    //     padding: 0 30px;
+    //     position: relative;
+    //     .logistics-left {
+    //         width: 132px;
+    //         border-right: 5px solid #f2f2f2;
+    //         text-align: right;
+    //         padding: 24px 30px 0 0;
+    //         .time {
+    //             color: #666;
+    //             font-size: 24px;
+    //             margin-bottom: 15px;
+    //         }
+    //         .date {
+    //             color: #999;
+    //             font-size: 20px;
+    //         }
+    //     }
+    //     .dot {
+    //         width: 22px;
+    //         height: 22px;
+    //         background:#bfbfbf;
+    //         border-radius:50%;
+    //         position: absolute;
+    //         top: 26px;
+    //         left: 148px;
+    //     }
+    //     .logistics-right {
+    //         flex: 1;
+    //         padding: 20px 0 0 30px ;
+    //         .collect {
+    //             font-size: 28px;
+    //             color: #333;
+    //             margin-bottom: 15px;
+    //             background-color: @white;
+    //         }
+    //         .news {
+    //             color: #999;
+    //             font-size: 24px;
+    //             letter-spacing: 2px;
+    //         }
+    //     }
+    // }
+
+    // .address > List > .logistics-left:last-child {
+    //     border-right: none;
+    // }
+}

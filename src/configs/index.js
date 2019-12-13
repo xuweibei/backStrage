@@ -1,2 +1,2 @@
-export {currentHref as href, hrefCfg} from './hrefCfg';
+export {currentHref as href} from './hrefCfg';
 export {urlCfg} from './urlCfg';

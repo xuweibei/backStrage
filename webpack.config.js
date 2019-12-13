@@ -288,7 +288,7 @@ module.exports = (env = {}) => {
                 BaseComponent: [path.resolve(__dirname, ENTRYDIR + '/components/base/BaseComponent'), 'default'],
             }),
             new HtmlWebpackPlugin({
-                title: 'C享网',
+                title: '商家助手',
                 template: path.resolve(__dirname, ENTRYDIR + '/index.ejs'),
                 filename: 'index.html',
                 inject: false,
@@ -374,7 +374,7 @@ module.exports = (env = {}) => {
         compress: true,  // 是否开启 gzip 压缩
         port: 82,
         open: true,
-        openPage: './#/goods-detail'
+        openPage: './#/order-detail'
     });
 
     return clientConfig;

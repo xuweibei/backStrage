@@ -31,9 +31,9 @@ export const fetch = (url, data) => new Promise((resolve, reject) => {
             }))
         }).then(response => {
             if (response) {
-                if (response.errno === 0) {
+                if (response.status === 0) {
                     resolve(response);
-                } else if (response.errno === 1) {
+                } else if (response.status === 1) {
                     showFail(response.message);
                     resolve(response);
                 }
