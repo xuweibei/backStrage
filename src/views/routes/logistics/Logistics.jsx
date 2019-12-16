@@ -24,6 +24,7 @@ export default class MyOrder extends BaseComponent {
         const point = new window.BMap.Point(119.33022111, 26.04712550);
         this.map.centerAndZoom(point, 15);
         this.drawMap();
+        this.createMarker();
     };
 
     //获取物流信息
@@ -37,6 +38,23 @@ export default class MyOrder extends BaseComponent {
             });
         });
     }
+
+    //自定义标注
+    createMarker = () => {
+        // const {orderInfo} = this.state;
+        // console.log(orderInfo && orderInfo.express_content && orderInfo.express_content.city);
+        const point = new window.BMap.Point('119.33022111', '26.04712550');
+        const markers = new window.BMap.Marker(point);
+        const label = new window.BMap.Label('福建省福州市仓山区', {offset: new window.BMap.Size(20, -10)});
+        label.setStyle({
+            backgroundColor: '#fff',
+            border: 'none',
+            padding: '10px'
+        });
+        markers.openInfoWindow(point);
+        markers.setLabel(label);
+        this.map.addOverlay(markers);
+    };
 
     //绘制路线
     drawMap = () => {
