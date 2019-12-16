@@ -7,7 +7,7 @@ const {urlCfg} = Configs;
 
 export default class ShopCertification extends BaseComponent {
     state = {
-        certificationInfo: {}
+        certificationInfo: {} //店铺认证信息
     }
 
     componentDidMount() {
@@ -18,7 +18,7 @@ export default class ShopCertification extends BaseComponent {
     getCertification = () => {
         this.fetch(urlCfg.shopCertification, {
             data: {
-                userToken: 'ba7d1a8Db0H30fD4b2I731E8bf1d7446e39e6b6fd00'
+                userToken: '498a12eKb3Ibe1g152Xc08Ab3mdd734843966b14483'
             }
         }).then(res => {
             this.setState({

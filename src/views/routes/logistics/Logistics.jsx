@@ -7,8 +7,8 @@ const {urlCfg} = Configs;
 
 export default class MyOrder extends BaseComponent {
     state = {
-        orderInfo: {},
-        slideShow: false
+        orderInfo: {}, //物流信息
+        slideShow: false //物流详情展示
     }
 
     componentDidMount() {
@@ -16,6 +16,7 @@ export default class MyOrder extends BaseComponent {
         this.initMap();
     }
 
+    //初始化地图
     initMap = () => {
         this.map = new window.BMap.Map('home');
         // FIXME: 经纬度不能写死
@@ -29,7 +30,7 @@ export default class MyOrder extends BaseComponent {
     getOrderInfo = () => {
         this.fetch(urlCfg.orderInfo, {data: {
             order_id: '2905',
-            userToken: 'e9e71c6Yd7m5c1u608Gcc4x85G77704933df66a441e'
+            userToken: '498a12eKb3Ibe1g152Xc08Ab3mdd734843966b14483'
         }}).then(res => {
             this.setState({
                 orderInfo: res.data
@@ -57,6 +58,7 @@ export default class MyOrder extends BaseComponent {
         walk.search(start, end);
     }
 
+    //物流详情开关
     slideOut = (slideShow, e) => {
         e.nativeEvent.stopImmediatePropagation();
         e.stopPropagation();
@@ -75,7 +77,7 @@ export default class MyOrder extends BaseComponent {
                 <div className="logistics-info-top">
                     <div className="logistics-info-top-container">
                         <div className="item">
-                            <img src={require('../../../assets/images/goods.png')} alt=""/>
+                            <img src={orderInfo.picpath} alt=""/>
                         </div>
                         <div className="item">
                             <p>订单状态</p>
