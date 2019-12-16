@@ -4,6 +4,7 @@
 import './Logistics.less';
 
 const {urlCfg} = Configs;
+const {getUrlParam} = Utils;
 
 export default class MyOrder extends BaseComponent {
     state = {
@@ -27,9 +28,9 @@ export default class MyOrder extends BaseComponent {
 
     //获取物流信息
     getOrderInfo = () => {
+        const orderId = decodeURI(getUrlParam('orderId', encodeURI(this.props.location.search)));
         this.fetch(urlCfg.orderInfo, {data: {
-            order_id: '2905',
-            userToken: 'e9e71c6Yd7m5c1u608Gcc4x85G77704933df66a441e'
+            order_id: orderId
         }}).then(res => {
             this.setState({
                 orderInfo: res.data
