@@ -7,12 +7,17 @@ const {urlCfg} = Configs;
 const {getUrlParam} = Utils;
 
 export default class OrderDetail extends BaseComponent {
+<<<<<<< HEAD
     constructor(props) {
         super(props);
         this.state = {
             orderDetail: {},
             id: decodeURI(getUrlParam('id', encodeURI(this.props.location.search)))
         };
+=======
+    state = {
+        orderDetail: {} //订单详情
+>>>>>>> a9a1b0e729b3c2615e83adc7ce59d3db76e5a10c
     }
 
     componentDidMount() {
@@ -23,7 +28,14 @@ export default class OrderDetail extends BaseComponent {
     getOrderDetail = () => {
         const {id} = this.state;
         this.fetch(urlCfg.orderDetail, {
+<<<<<<< HEAD
             data: {id}
+=======
+            data: {
+                id: '3237',
+                userToken: '498a12eKb3Ibe1g152Xc08Ab3mdd734843966b14483'
+            }
+>>>>>>> a9a1b0e729b3c2615e83adc7ce59d3db76e5a10c
         }).then(res => {
             this.setState({
                 orderDetail: res.data
@@ -31,7 +43,7 @@ export default class OrderDetail extends BaseComponent {
         });
     }
 
-    //获取线上订单详情
+    //获取线下订单详情
     getSelfOrderDetail = () => {
         this.fetch(urlCfg.selfOrderDetail, {
             data: {
@@ -44,14 +56,8 @@ export default class OrderDetail extends BaseComponent {
         });
     }
 
-    orderInfo = (infoObj) => infoObj.map(item => (
-        <div className="invoice-info-body-item" key={item.title}>
-            <span>{item.title}</span>
-            <span>{item.value}</span>
-        </div>
-    ))
-
-    render() {
+    //可重用组件
+    useMap = (infoObj) => {
         const {orderDetail} = this.state;
         const invoiceObj = [
             {title: '发票类型', value: orderDetail.invoice_type},
@@ -68,6 +74,24 @@ export default class OrderDetail extends BaseComponent {
             {title: '下单时间', value: orderDetail.crtdate},
             {title: '支付时间', value: orderDetail.pay_date}
         ];
+        return (
+            infoObj === 0 ? (invoiceObj.map(item => (
+                <div className="invoice-info-body-item" key={item.title}>
+                    <span>{item.title}</span>
+                    <span>{item.value}</span>
+                </div>
+            ))) : (
+                orderObj.map(item => (
+                    <div className="invoice-info-body-item" key={item.title}>
+                        <span>{item.title}</span>
+                        <span>{item.value}</span>
+                    </div>
+                ))
+            ));
+    }
+
+    render() {
+        const {orderDetail} = this.state;
         return (
             <div className="order-detail-container">
                 <div className="order-detail-top pd-l-r-40">
@@ -140,7 +164,7 @@ export default class OrderDetail extends BaseComponent {
                         <div className="invoice-info pd-l-r-40">
                             <h5 className="invoice-info-title">发票信息</h5>
                             <div className="invoice-info-body">
-                                {this.orderInfo(invoiceObj)}
+                                {this.useMap(0)}
                             </div>
                         </div>
                     )
@@ -148,7 +172,7 @@ export default class OrderDetail extends BaseComponent {
                 <div className="order-info invoice-info pd-l-r-40">
                     <h5 className="invoice-info-title">订单信息</h5>
                     <div className="invoice-info-body">
-                        {this.orderInfo(orderObj)}
+                        {this.useMap(1)}
                     </div>
                 </div>
             </div>
