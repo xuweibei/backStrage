@@ -24,14 +24,14 @@ export default class MyOrder extends BaseComponent {
         const point = new window.BMap.Point(119.33022111, 26.04712550);
         this.map.centerAndZoom(point, 15);
         this.drawMap();
-        this.createMarker();
+        // this.createMarker();
     };
 
     //获取物流信息
     getOrderInfo = () => {
         this.fetch(urlCfg.orderInfo, {data: {
             order_id: '2905',
-            userToken: '498a12eKb3Ibe1g152Xc08Ab3mdd734843966b14483'
+            userToken: 'ada114fBf4n742U3bdR2a8b57Vc57d41336c636355f'
         }}).then(res => {
             this.setState({
                 orderInfo: res.data
@@ -49,7 +49,7 @@ export default class MyOrder extends BaseComponent {
         label.setStyle({
             backgroundColor: '#fff',
             border: 'none',
-            padding: '10px'
+            padding: '5px 10px'
         });
         markers.openInfoWindow(point);
         markers.setLabel(label);
