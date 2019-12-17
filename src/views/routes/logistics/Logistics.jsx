@@ -29,9 +29,9 @@ export default class MyOrder extends BaseComponent {
 
     //获取物流信息
     getOrderInfo = () => {
+        const orderId = decodeURI(getUrlParam('orderId', encodeURI(this.props.location.search)));
         this.fetch(urlCfg.orderInfo, {data: {
-            order_id: '2905',
-            userToken: 'ada114fBf4n742U3bdR2a8b57Vc57d41336c636355f'
+            order_id: orderId
         }}).then(res => {
             this.setState({
                 orderInfo: res.data

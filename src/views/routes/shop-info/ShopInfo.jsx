@@ -56,9 +56,7 @@ export default class ShopInfo extends BaseComponent {
 
   //获取店铺信息
   getShopInfo = () => {
-      this.fetch(urlCfg.shopInfo, {
-          data: {userToken: '498a12eKb3Ibe1g152Xc08Ab3mdd734843966b14483'}
-      }).then(res => {
+      this.fetch(urlCfg.shopInfo).then(res => {
           this.setState({
               shopInfo: res.data
           });

@@ -4,10 +4,15 @@ import './OrderDetail.less';
 import {Button} from 'antd-mobile';
 
 const {urlCfg} = Configs;
+const {getUrlParam} = Utils;
 
 export default class OrderDetail extends BaseComponent {
-    state = {
-        orderDetail: {} //订单详情
+    constructor(props) {
+        super(props);
+        this.state = {
+            orderDetail: {},
+            id: decodeURI(getUrlParam('id', encodeURI(this.props.location.search)))
+        };
     }
 
     componentDidMount() {
@@ -16,11 +21,9 @@ export default class OrderDetail extends BaseComponent {
 
     //获取线上订单详情
     getOrderDetail = () => {
+        const {id} = this.state;
         this.fetch(urlCfg.orderDetail, {
-            data: {
-                id: '3237',
-                userToken: '498a12eKb3Ibe1g152Xc08Ab3mdd734843966b14483'
-            }
+            data: {id}
         }).then(res => {
             this.setState({
                 orderDetail: res.data
@@ -32,8 +35,7 @@ export default class OrderDetail extends BaseComponent {
     getSelfOrderDetail = () => {
         this.fetch(urlCfg.selfOrderDetail, {
             data: {
-                id: '3430',
-                userToken: 'ba7d1a8Db0H30fD4b2I731E8bf1d7446e39e6b6fd00'
+                id: '3430'
             }
         }).then(res => {
             this.setState({
