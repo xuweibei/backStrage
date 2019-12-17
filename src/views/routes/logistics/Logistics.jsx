@@ -4,6 +4,7 @@
 import './Logistics.less';
 
 const {urlCfg} = Configs;
+const {getUrlParam} = Utils;
 
 export default class MyOrder extends BaseComponent {
     state = {
