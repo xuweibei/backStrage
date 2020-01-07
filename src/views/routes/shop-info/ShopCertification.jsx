@@ -12,15 +12,12 @@ export default class ShopCertification extends BaseComponent {
 
     componentDidMount() {
         this.getCertification();
+        this.getCertification();
     }
 
     //获取店铺认证信息
     getCertification = () => {
-        this.fetch(urlCfg.shopCertification, {
-            data: {
-                userToken: '498a12eKb3Ibe1g152Xc08Ab3mdd734843966b14483'
-            }
-        }).then(res => {
+        this.fetch(urlCfg.shopCertification).then(res => {
             this.setState({
                 certificationInfo: res.data
             });

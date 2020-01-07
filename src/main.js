@@ -5,7 +5,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './views/App';
 
-setTimeout(() => {
+
+global.getUserToken = function (data) {
+    window.localStorage.setItem('userToken', data);
     const render = Component => {
         ReactDOM.render(
             <Component/>,
@@ -13,4 +15,4 @@ setTimeout(() => {
         );
     };
     render(App);
-}, 500);
+};

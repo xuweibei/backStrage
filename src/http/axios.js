@@ -10,8 +10,6 @@ const {MESSAGE} = Constants;
 //拦截请求
 axios.interceptors.request.use(config => {
     if (!config.data) config.data = {};
-    alert(window.localStorage.getItem('zpyg_userToken'));
-    config.data.append('userToken', window.localStorage.getItem('zpyg_userToken'));
     return config;
 }, error => Promise.reject(error));
 
@@ -19,6 +17,7 @@ axios.interceptors.request.use(config => {
 axios.interceptors.response.use(response => {
     if (response.data.status === 100 || response.data.status === 101) {
         showFail('token过期');
+        window.android.goLogin('');
     }
     return response;
 }, error => Promise.reject(error));
@@ -34,6 +33,11 @@ export const fetch = (url, data = {}) => new Promise((resolve, reject) => {
                     datas.append(i, data.data[i]);
                 }
             }
+        }
+        datas.append('userToken', window.localStorage.getItem('userToken'));
+        //第二种
+        for (const [a, b] of datas.entries()) {
+            console.log(a, b, '请求参数');
         }
         axios.post(url, datas, {
             cancelToken: new CancelToken(((c) => {

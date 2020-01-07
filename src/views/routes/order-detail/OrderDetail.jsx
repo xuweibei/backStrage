@@ -4,20 +4,15 @@ import './OrderDetail.less';
 import {Button} from 'antd-mobile';
 
 const {urlCfg} = Configs;
-const {getUrlParam} = Utils;
+const {getUrlParam, isAndroid, appHistory} = Utils;
 
 export default class OrderDetail extends BaseComponent {
-<<<<<<< HEAD
     constructor(props) {
         super(props);
         this.state = {
             orderDetail: {},
-            id: decodeURI(getUrlParam('id', encodeURI(this.props.location.search)))
+            id: decodeURI(getUrlParam('id', encodeURI(props.location.search)))
         };
-=======
-    state = {
-        orderDetail: {} //订单详情
->>>>>>> a9a1b0e729b3c2615e83adc7ce59d3db76e5a10c
     }
 
     componentDidMount() {
@@ -28,18 +23,13 @@ export default class OrderDetail extends BaseComponent {
     getOrderDetail = () => {
         const {id} = this.state;
         this.fetch(urlCfg.orderDetail, {
-<<<<<<< HEAD
             data: {id}
-=======
-            data: {
-                id: '3237',
-                userToken: '498a12eKb3Ibe1g152Xc08Ab3mdd734843966b14483'
-            }
->>>>>>> a9a1b0e729b3c2615e83adc7ce59d3db76e5a10c
         }).then(res => {
-            this.setState({
-                orderDetail: res.data
-            });
+            if (res && res.status === 0) {
+                this.setState({
+                    orderDetail: res.data
+                });
+            }
         });
     }
 
@@ -90,6 +80,25 @@ export default class OrderDetail extends BaseComponent {
             ));
     }
 
+    //打电话
+    sellPhone = (phone) => {
+        if (isAndroid) {
+            window.android.giveCall(phone);
+        }
+    }
+
+    //前往物流页面
+    goLogital = () => {
+        const {id} = this.state;
+        window.android.goLogistics(id);
+    }
+
+    //核销订单
+    writeOff = () => {
+        const {id} = this.state;
+        window.android.writeOff(id);
+    }
+
     render() {
         const {orderDetail} = this.state;
         return (
@@ -101,7 +110,7 @@ export default class OrderDetail extends BaseComponent {
                             orderDetail.restime && <p>倒计时：{orderDetail.restime}</p>
                         }
                     </div>
-                    <Button className="logistics">{orderDetail.if_express === '1' ? <span>物流详情</span> : <span>核销订单</span>}<div className="wuliu-icon"/></Button>
+                    <Button className="logistics">{orderDetail && (orderDetail.if_express === '1' ? <span onClick={this.goLogital}>物流详情</span> : <span onClick={this.writeOff}>核销订单</span>)}<div className="wuliu-icon"/></Button>
                 </div>
                 <div className="order-detail-body">
                     <div className="order-detail-body-top">
@@ -112,11 +121,11 @@ export default class OrderDetail extends BaseComponent {
                             </div >
                             <p className="user_address">{orderDetail.address || orderDetail.white_start_time}</p>
                         </div>
-                        <div className="phone-call"/>
+                        <div onClick={() => this.sellPhone(orderDetail.linktel)} className="phone-call"/>
                     </div>
                     <div className="order-detail-body-bot pd-l-r-40">
                         <span>备注</span>
-                        <span>{orderDetail.remarks}</span>
+                        <span>{orderDetail.remarks || '无'}</span>
                     </div>
                 </div>
                 <div className="order-detail-list pd-l-r-40">
