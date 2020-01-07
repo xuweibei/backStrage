@@ -11,12 +11,18 @@ export default class OrderDetail extends BaseComponent {
         super(props);
         this.state = {
             orderDetail: {},
-            id: decodeURI(getUrlParam('id', encodeURI(props.location.search)))
+            id: decodeURI(getUrlParam('id', encodeURI(props.location.search))),
+            type: decodeURI(getUrlParam('type', encodeURI(props.location.search)))  //1 为线上订单过来，2位线下订单过来
         };
     }
 
     componentDidMount() {
-        this.getOrderDetail();
+        const {type} = this.state;
+        if (type === '1') {
+            this.getOrderDetail();
+        } else {
+            this.getSelfOrderDetail();
+        }
     }
 
     //获取线上订单详情
@@ -35,14 +41,13 @@ export default class OrderDetail extends BaseComponent {
 
     //获取线下订单详情
     getSelfOrderDetail = () => {
-        this.fetch(urlCfg.selfOrderDetail, {
-            data: {
-                id: '3430'
+        const {id} = this.state;
+        this.fetch(urlCfg.selfOrderDetail, {data: {id}}).then(res => {
+            if (res && res.status === 0) {
+                this.setState({
+                    orderDetail: res.data
+                });
             }
-        }).then(res => {
-            this.setState({
-                orderDetail: res.data
-            });
         });
     }
 

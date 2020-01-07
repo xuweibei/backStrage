@@ -16,8 +16,10 @@ axios.interceptors.request.use(config => {
 //拦截响应
 axios.interceptors.response.use(response => {
     if (response.data.status === 100 || response.data.status === 101) {
-        showFail('token过期');
-        window.android.goLogin('');
+        showFail('登录过期');
+        setTimeout(() => {
+            window.android.goLogin('');
+        }, 1000);
     }
     return response;
 }, error => Promise.reject(error));

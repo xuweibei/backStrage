@@ -12,7 +12,6 @@ export default class ShopCertification extends BaseComponent {
 
     componentDidMount() {
         this.getCertification();
-        this.getCertification();
     }
 
     //获取店铺认证信息
