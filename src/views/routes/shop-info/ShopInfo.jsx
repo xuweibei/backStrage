@@ -57,9 +57,11 @@ export default class ShopInfo extends BaseComponent {
   //获取店铺信息
   getShopInfo = () => {
       this.fetch(urlCfg.shopInfo).then(res => {
-          this.setState({
-              shopInfo: res.data
-          });
+          if (res && res.status === 0) {
+              this.setState({
+                  shopInfo: res.data
+              });
+          }
       });
   }
 

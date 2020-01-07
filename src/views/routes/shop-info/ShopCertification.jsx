@@ -18,9 +18,11 @@ export default class ShopCertification extends BaseComponent {
     //获取店铺认证信息
     getCertification = () => {
         this.fetch(urlCfg.shopCertification).then(res => {
-            this.setState({
-                certificationInfo: res.data
-            });
+            if (res && res.status === 0) {
+                this.setState({
+                    certificationInfo: res.data
+                });
+            }
         });
     }
 
