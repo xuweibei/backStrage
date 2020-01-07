@@ -25,7 +25,7 @@ export default class MyOrder extends BaseComponent {
         const point = new window.BMap.Point(119.33022111, 26.04712550);
         this.map.centerAndZoom(point, 15);
         this.drawMap();
-        this.createMarker();
+        // this.createMarker();
     };
 
     //获取物流信息
@@ -50,7 +50,7 @@ export default class MyOrder extends BaseComponent {
         label.setStyle({
             backgroundColor: '#fff',
             border: 'none',
-            padding: '10px'
+            padding: '5px 10px'
         });
         markers.openInfoWindow(point);
         markers.setLabel(label);
