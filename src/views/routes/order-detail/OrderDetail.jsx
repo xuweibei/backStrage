@@ -4,7 +4,7 @@ import './OrderDetail.less';
 import {Button} from 'antd-mobile';
 
 const {urlCfg} = Configs;
-const {getUrlParam, isAndroid, appHistory} = Utils;
+const {getUrlParam, isAndroid} = Utils;
 
 export default class OrderDetail extends BaseComponent {
     constructor(props) {
