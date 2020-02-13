@@ -89,19 +89,29 @@ export default class OrderDetail extends BaseComponent {
     sellPhone = (phone) => {
         if (isAndroid) {
             window.android.giveCall(phone);
+        } else {
+            window.webkit.messageHandlers.giveCall.postMessage(JSON.stringify(phone));
         }
     }
 
     //前往物流页面
     goLogital = () => {
         const {id} = this.state;
-        window.android.goLogistics(id);
+        if (isAndroid) {
+            window.android.goLogistics(id);
+        } else {
+            window.webkit.messageHandlers.goLogistics.postMessage(JSON.stringify(id));
+        }
     }
 
     //核销订单
     writeOff = () => {
         const {id} = this.state;
-        window.android.writeOff(id);
+        if (isAndroid) {
+            window.android.writeOff(id);
+        } else {
+            window.webkit.messageHandlers.writeOff.postMessage(JSON.stringify(id));
+        }
     }
 
     render() {
