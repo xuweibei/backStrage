@@ -167,12 +167,12 @@ export default class OrderDetail extends BaseComponent {
                     {
                         orderDetail.status > 2 && <Button className="btnStyle"><span onClick={this.goLogital}>物流详情</span><div className="wuliu-icon"/></Button>
                     }
-                    {
+                    {/* { // 二期功能 甘泽隆
                         orderDetail.status > 0 && orderDetail.status < 3 && <Button className="btnStyle"> <span onClick={this.writeOff}>核销订单</span></Button>
                     }
                     {
                         orderDetail.status < 2 && <Button className="btnStyle"> <span onClick={this.closeOrder}>关闭订单</span></Button>
-                    }
+                    } */}
                 </div>
                 <div className="order-detail-body">
                     <div className="order-detail-body-top">
