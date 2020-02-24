@@ -33,7 +33,7 @@ export default class OrderDetail extends BaseComponent {
         }).then(res => {
             if (res && res.status === 0) {
                 this.setState({
-                    orderDetail: res.data
+                    orderDetail: res.data || {}
                 });
             }
         });
@@ -45,7 +45,7 @@ export default class OrderDetail extends BaseComponent {
         this.fetch(urlCfg.selfOrderDetail, {data: {id}}).then(res => {
             if (res && res.status === 0) {
                 this.setState({
-                    orderDetail: res.data
+                    orderDetail: res.data || {}
                 });
             }
         });
@@ -114,6 +114,16 @@ export default class OrderDetail extends BaseComponent {
         }
     }
 
+    //关闭订单
+    closeOrder = () => {
+        const {id} = this.state;
+        if (isAndroid) {
+            window.android.goBack();
+        } else {
+            window.webkit.messageHandlers.goBack.postMessage();
+        }
+    }
+
     render() {
         const {orderDetail} = this.state;
         return (
@@ -125,13 +135,23 @@ export default class OrderDetail extends BaseComponent {
                             orderDetail.restime && <p>倒计时：{orderDetail.restime}</p>
                         }
                     </div>
-                    <Button className="logistics">{orderDetail && (orderDetail.if_express === '1' ? <span onClick={this.goLogital}>物流详情</span> : <span onClick={this.writeOff}>核销订单</span>)}<div className="wuliu-icon"/></Button>
+                    {
+                        orderDetail.status > 2 && <Button className="btnStyle"><span onClick={this.goLogital}>物流详情</span><div className="wuliu-icon"/></Button>
+                    }
+                    {
+                        orderDetail.status > 0 && orderDetail.status < 3 && <Button className="btnStyle"> <span onClick={this.writeOff}>核销订单</span></Button>
+                    }
+                    <Button className="btnStyle"> <span onClick={this.writeOff}>核销订单</span></Button>
+                    {
+                        orderDetail.status < 2 && <Button className="btnStyle"> <span onClick={this.closeOrder}>关闭订单</span></Button>
+                    }
+                    <Button className="btnStyle"> <span onClick={this.closeOrder}>关闭订单</span></Button>
                 </div>
                 <div className="order-detail-body">
                     <div className="order-detail-body-top">
                         <div className="top-info">
                             <div className="user_name">
-                                <span>{orderDetail.linkname}</span>
+                                <span>{orderDetail.nickname}</span>
                                 <span>{orderDetail.linktel}</span>
                             </div >
                             <p className="user_address">{orderDetail.address || orderDetail.white_start_time}</p>

@@ -76,6 +76,7 @@ export default class ShopInfo extends BaseComponent {
 
    render() {
        const {shopInfo} = this.state;
+       console.log(shopInfo, '说了快递费');
        return (
            <div className="shop-info-container">
                <div className="shop-info-title">
@@ -85,13 +86,13 @@ export default class ShopInfo extends BaseComponent {
                </div>
                <div className="shop-info-body pd-l-r-40">
                    <div className="shop-info">
-                       <h5 className="shop-info-header">店铺信息</h5>
+                       <span className="shop-info-header">店铺信息</span>
                        <div className="shop-info-content shop-info-spec">
                            {this.useComponent(0)}
                        </div>
                    </div>
                    <div className="shop-info">
-                       <h5 className="shop-info-header">入住人信息</h5>
+                       <span className="shop-info-header">入住人信息</span>
                        <div className="shop-info-content shop-info-rz">
                            {this.useComponent(1)}
                        </div>

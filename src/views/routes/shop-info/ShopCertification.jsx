@@ -37,22 +37,22 @@ export default class ShopCertification extends BaseComponent {
                         <p className="sub-title">身份证照</p>
                         <div className="ta-c card-photo">
                             <img src={certificationInfo.idcard_front} alt=""/>
-                            <img src={certificationInfo.hand_photo} alt=""/>
                             <img src={certificationInfo.idcard_back} alt=""/>
+                            <img src={certificationInfo.hand_photo} alt=""/>
                         </div>
                     </div>
                     <div className="document-info pd-l-r-40">
                         <div className="documemt-info-item">
                             <span>姓名</span>
-                            <span>{certificationInfo.mastar_name}</span>
+                            <span>{certificationInfo.mastar_name}1111</span>
                         </div>
                         <div className="documemt-info-item">
                             <span>身份证号</span>
-                            <span>{certificationInfo.idcard}</span>
+                            <span>{certificationInfo.idcard}222</span>
                         </div>
                         <div className="documemt-info-item">
                             <span>身份证有效期</span>
-                            <span>{certificationInfo.idcard_exp}</span>
+                            <span>{certificationInfo.idcard_exp}333</span>
                         </div>
                     </div>
                     {
@@ -86,7 +86,7 @@ export default class ShopCertification extends BaseComponent {
                                         <img src={certificationInfo.logo} alt=""/>
                                     </div>
                                     <div>
-                                        <p className="sub-title">商户店内照</p>
+                                        <p className="sub-title">商家店内照</p>
                                         <img src={certificationInfo.indoor} alt=""/>
                                     </div>
                                 </div>
@@ -107,7 +107,7 @@ export default class ShopCertification extends BaseComponent {
                                         <img src={certificationInfo.logo} alt=""/>
                                     </div>
                                     <div>
-                                        <p className="sub-title">商户店内照</p>
+                                        <p className="sub-title">商家店内照</p>
                                         <img src={certificationInfo.indoor} alt=""/>
                                     </div>
                                     <div>
