@@ -59,6 +59,19 @@ export default class ShopCertification extends BaseComponent {
                         certificationInfo.cer_type === '1' && (
                             <Fragment>
                                 <div className="shop-certification-title ta-c">
+                                    <h3>个体工商户证明材料</h3>
+                                </div>
+                                <div className="shop-info-photo ta-c pd-l-r-40">
+                                    <div>
+                                        <p className="sub-title">商户门头照</p>
+                                        <img src={certificationInfo.logo} alt=""/>
+                                    </div>
+                                    <div>
+                                        <p className="sub-title">商家店内照</p>
+                                        <img src={certificationInfo.indoor} alt=""/>
+                                    </div>
+                                </div>
+                                <div className="shop-certification-title ta-c">
                                     <h3>个体工商户营业信息</h3>
                                 </div>
                                 <div className="shop-info-photo ta-c pd-l-r-40">
@@ -75,19 +88,6 @@ export default class ShopCertification extends BaseComponent {
                                             <span>营业执照有效期</span>
                                             <span>{certificationInfo.shop_lic_exp}</span>
                                         </div>
-                                    </div>
-                                </div>
-                                <div className="shop-certification-title ta-c">
-                                    <h3>个体工商户证明材料</h3>
-                                </div>
-                                <div className="shop-info-photo ta-c pd-l-r-40">
-                                    <div>
-                                        <p className="sub-title">商户门头照</p>
-                                        <img src={certificationInfo.logo} alt=""/>
-                                    </div>
-                                    <div>
-                                        <p className="sub-title">商家店内照</p>
-                                        <img src={certificationInfo.indoor} alt=""/>
                                     </div>
                                 </div>
                             </Fragment>
@@ -120,7 +120,7 @@ export default class ShopCertification extends BaseComponent {
                                 </div>
                                 <div className="personal-shop-info pd-l-r-40 ta-c">
                                     <div><div className="red-close"/>未认证</div>
-                                    <p>（需提供经营者姓名和入住人一致的个体工商户营业信息）</p>
+                                    <p>（需提供经营者姓名和入驻人一致的个体工商户营业信息）</p>
                                     <p>请前往PC端商家后台补充资料</p>
                                 </div>
                             </Fragment>

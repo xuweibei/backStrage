@@ -1,8 +1,10 @@
 //订单详情页，2019/11/19，楚小龙
 
 import './OrderDetail.less';
-import {Button} from 'antd-mobile';
+import {Button, Modal} from 'antd-mobile';
+import {showInfo, showSuccess} from '../../../utils/mixin';
 
+const prompt = Modal.prompt;
 const {urlCfg} = Configs;
 const {getUrlParam, isAndroid} = Utils;
 
@@ -20,7 +22,9 @@ export default class OrderDetail extends BaseComponent {
         const {type} = this.state;
         if (type === '1') {
             this.getOrderDetail();
+            this.getOrderDetail();
         } else {
+            this.getSelfOrderDetail();
             this.getSelfOrderDetail();
         }
     }
@@ -55,14 +59,14 @@ export default class OrderDetail extends BaseComponent {
     useMap = (infoObj) => {
         const {orderDetail} = this.state;
         const invoiceObj = [
-            {title: '发票类型', value: orderDetail.invoice_type},
-            {title: '抬头发票', value: orderDetail.head_type},
-            {title: '企业', value: orderDetail.enterprise_name},
-            {title: '纳税人识别号', value: orderDetail.tax_id},
-            {title: '开户银行', value: orderDetail.bank},
-            {title: '企业地址', value: orderDetail.enterprise_addr},
-            {title: '银行账户', value: orderDetail.bank_card_no},
-            {title: '企业电话', value: orderDetail.enterprise_phone}
+            {title: '发票类型', value: orderDetail.invoice && orderDetail.invoice.invoice_type},
+            {title: '抬头发票', value: orderDetail.invoice && orderDetail.invoice.head_type},
+            {title: '企业', value: orderDetail.invoice && orderDetail.invoice.enterprise_name},
+            {title: '纳税人识别号', value: orderDetail.invoice && orderDetail.invoice.tax_id},
+            {title: '开户银行', value: orderDetail.invoice && orderDetail.invoice.bank},
+            {title: '企业地址', value: orderDetail.invoice && orderDetail.invoice.enterprise_addr},
+            {title: '银行账户', value: orderDetail.invoice && orderDetail.invoice.bank_card_no},
+            {title: '企业电话', value: orderDetail.invoice && orderDetail.invoice.enterprise_phone}
         ];
         const orderObj = [
             {title: '订单号', value: orderDetail.order_no},
@@ -116,12 +120,37 @@ export default class OrderDetail extends BaseComponent {
 
     //关闭订单
     closeOrder = () => {
-        const {id} = this.state;
-        if (isAndroid) {
-            window.android.goBack();
-        } else {
-            window.webkit.messageHandlers.goBack.postMessage();
+        const that = this;
+        return prompt(
+            '确定关闭订单？',
+            '',
+            [
+                {text: '取消'},
+                {text: '确定', onPress: value => that.mustSureClose(value)}
+            ],
+            'default', '', ['请输入关闭原因']
+        );
+    }
+
+    //确定关闭订单
+    mustSureClose = (value) => {
+        if (!value) {
+            showInfo('请输入关闭原因！');
+            return;
         }
+        const {id} = this.state;
+        this.fetch(urlCfg.closeOrder, {data: {order_id: id, reason: value}}).then(res => {
+            if (res && res.status === 0) {
+                showSuccess('操作成功！');
+                setTimeout(() => {
+                    if (isAndroid) {
+                        window.android.goBack();
+                    } else {
+                        window.webkit.messageHandlers.goBack.postMessage();
+                    }
+                }, 500);
+            }
+        });
     }
 
     render() {
@@ -141,11 +170,9 @@ export default class OrderDetail extends BaseComponent {
                     {
                         orderDetail.status > 0 && orderDetail.status < 3 && <Button className="btnStyle"> <span onClick={this.writeOff}>核销订单</span></Button>
                     }
-                    <Button className="btnStyle"> <span onClick={this.writeOff}>核销订单</span></Button>
                     {
                         orderDetail.status < 2 && <Button className="btnStyle"> <span onClick={this.closeOrder}>关闭订单</span></Button>
                     }
-                    <Button className="btnStyle"> <span onClick={this.closeOrder}>关闭订单</span></Button>
                 </div>
                 <div className="order-detail-body">
                     <div className="order-detail-body-top">

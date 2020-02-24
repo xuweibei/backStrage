@@ -31,8 +31,8 @@ export default class ShopInfo extends BaseComponent {
             {title: '商家图册', value: shopInfo.album && shopInfo.album.length > 0 && shopInfo.album.map(item => (<div key={item}><img src={item} alt=""/></div>))}
         ];
         const residentObj = [
-            {title: '入住人姓名', value: shopInfo.re_name},
-            {title: '入住人手机', value: shopInfo.phone},
+            {title: '入驻人姓名', value: shopInfo.re_name},
+            {title: '入驻人手机', value: shopInfo.phone},
             {title: '入驻时间', value: this.timestampToTime(shopInfo.crtdate)}
         ];
         return (
@@ -76,7 +76,6 @@ export default class ShopInfo extends BaseComponent {
 
    render() {
        const {shopInfo} = this.state;
-       console.log(shopInfo, '说了快递费');
        return (
            <div className="shop-info-container">
                <div className="shop-info-title">
@@ -92,7 +91,7 @@ export default class ShopInfo extends BaseComponent {
                        </div>
                    </div>
                    <div className="shop-info">
-                       <span className="shop-info-header">入住人信息</span>
+                       <span className="shop-info-header">入驻人信息</span>
                        <div className="shop-info-content shop-info-rz">
                            {this.useComponent(1)}
                        </div>
