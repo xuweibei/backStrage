@@ -1,7 +1,7 @@
 .order-detail-container{
   padding-bottom: 100px;
   .order-detail-top{
-    height: 320px;
+    height: 384px;
     background:linear-gradient(225deg,rgba(96,162,255,1) 0%,rgba(40,130,255,1) 100%);
     text-align: center;
     color: #fff;
@@ -12,6 +12,7 @@
       p:nth-child(1){
         font-size:40px;
         font-weight:bold;
+        text-align: left;
       }
       p:nth-child(2){
         font-size: 24px;
@@ -106,6 +107,12 @@
         height: 28px;
         display: inline-block;
       }
+      .order-status{
+        font-size:28px;
+        font-weight:400;
+        line-height:20px;
+        color:rgba(255,167,59,1);
+      }
     }
     .list-body{
       .list-body-item{
@@ -173,6 +180,9 @@
         font-size: 28px;
         margin-top: 10px;
       }
+      .totle-price{
+        font-size: 40px;
+      }
     }
   }
   .invoice-info{
@@ -185,13 +195,16 @@
       font-size: 28px;
       font-weight: 600;
       color: #2e2e2e;
+      margin-bottom:40px;
     }
     .invoice-info-body{
       .invoice-info-body-item{
-        height: 112px;
+        height: 42px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom:40px;
+        color:#999999;
       }
       .invoice-info-body-item:nth-child(2){
         border-bottom: 1px solid #eee;

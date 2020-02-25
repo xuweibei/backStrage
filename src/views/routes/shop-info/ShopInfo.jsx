@@ -28,7 +28,11 @@ export default class ShopInfo extends BaseComponent {
             {title: '商户负责人', value: shopInfo.linkName},
             {title: '商户负责人电话', value: shopInfo.phone},
             {title: '店铺简介', value: shopInfo.intro},
-            {title: '商家图册', value: shopInfo.album && shopInfo.album.length > 0 && shopInfo.album.map(item => (<div key={item}><img src={item} alt=""/></div>))}
+            {title: '商家图册',
+                value:
+                    shopInfo.album && shopInfo.album.length > 0 && <div className="shop-img">{shopInfo.album.map((item, num) => <img key={item} style={num % 2 === 0 ? {marginRight: '0.16rem'} : ''} src={item} alt=""/>)}</div>,
+                shopImg: true
+            }
         ];
         const residentObj = [
             {title: '入驻人姓名', value: shopInfo.re_name},
@@ -40,7 +44,7 @@ export default class ShopInfo extends BaseComponent {
                 shopInfoObj.map(item => (
                     <div className="shop-info-body-item" key={item.title}>
                         <span>{item.title}</span>
-                        <span>{item.value}</span>
+                        {item.shopImg ? item.value : <span>{item.value}</span>}
                     </div>
                 ))
             ) : (
@@ -82,19 +86,19 @@ export default class ShopInfo extends BaseComponent {
                    {
                        shopInfo.logo && <img src={shopInfo.logo} alt=""/>
                    }
+                   <img src="http://t8.baidu.com/it/u=3571592872,3353494284&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1583227287&t=a08a91edbc4b0f3e6535debe0c46ecc0"/>
                </div>
-               <div className="shop-info-body pd-l-r-40">
-                   <div className="shop-info">
-                       <span className="shop-info-header">店铺信息</span>
-                       <div className="shop-info-content shop-info-spec">
-                           {this.useComponent(0)}
-                       </div>
+               <div className="shop-info">
+                   <span className="shop-info-header">店铺信息</span>
+                   <div className="shop-info-content shop-info-spec">
+                       {this.useComponent(0)}
                    </div>
-                   <div className="shop-info">
-                       <span className="shop-info-header">入驻人信息</span>
-                       <div className="shop-info-content shop-info-rz">
-                           {this.useComponent(1)}
-                       </div>
+               </div>
+               <div className="bound"/>
+               <div className="shop-info">
+                   <span className="shop-info-header">入驻人信息</span>
+                   <div className="shop-info-content shop-info-rz">
+                       {this.useComponent(1)}
                    </div>
                </div>
            </div>

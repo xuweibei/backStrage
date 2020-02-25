@@ -197,7 +197,7 @@ export default class OrderDetail extends BaseComponent {
                             <span className="list-header-item">{orderDetail.no}</span>
                             <div className="list-header-item list-header-icon"/>
                         </div>
-                        <div>{orderDetail.status_msg}</div>
+                        <div className="order-status">{orderDetail.status_msg}</div>
                     </div>
                     <div className="list-body">
                         {
@@ -227,7 +227,7 @@ export default class OrderDetail extends BaseComponent {
                     </div>
                     <div className="list-footer">
                         <p>总记账量：{orderDetail.deposit}</p>
-                        <p>共{orderDetail.pr_list && orderDetail.pr_list.length}件商品 合计：￥{orderDetail.price}</p>
+                        <p>共{orderDetail.pr_list && orderDetail.pr_list.length}件商品 合计：￥<span className="totle-price">{orderDetail.price}</span></p>
                     </div>
                 </div>
                 {

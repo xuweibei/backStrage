@@ -1,37 +1,43 @@
 .shop-info-container{
   margin-bottom: 88px;
+  background:#fff;
   .shop-info-title{
-    background: url('../../../assets/images/bg_dianpu.png') repeat;
+    background: url('../../../assets/images/bg_dianpu.png') no-repeat;
     background-size: 100%;
-    height: 316px;
+    height: 380px;
     position: relative;
     text-align: center;
     img{
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      bottom: -30px;
+      bottom: 20px;
       border-radius: 50%;
       width:148px;
       height:148px;
     }
   }
-  .shop-info-body{
-    background-color: #fff;
+    .bound{
+      width:100%;
+      height:20px;
+      background:#F9F9F9;
+    }
     .shop-info{
-      margin-top: 20px;
-      padding-top: 32px;
-      padding-bottom: 32px;
+      padding:30px;
+      padding-top:16px;
       .shop-info-header{
         text-align: left;
         font-size: 34px;
         font-weight: 600;
         color: #2e2e2e;
         font-family:PingFang SC;
+        margin-bottom:48px;
+        display: block;
       }
       .shop-info-content{
         .shop-info-body-item{
-          height: 112px;
+          height:60px;
+          margin-bottom:40px;
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -47,9 +53,19 @@
             text-align: right;
             color:#2E2E2E;
           }
+          .shop-img{
+            float: left;
+            img{
+              width:334px !important;
+              height:252px;
+              border-radius: 12px;
+              margin-top:24px;
+            }
+          }
         }
         .shop-info-body-item:nth-child(2){
           border-bottom: 1px solid #eee;
+          padding-bottom:40px;
         }
       }
       .shop-info-spec{
@@ -86,5 +102,4 @@
         }
       }
     }
-  }
 }
