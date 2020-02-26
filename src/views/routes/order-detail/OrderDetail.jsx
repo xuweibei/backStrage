@@ -6,7 +6,7 @@ import {showInfo, showSuccess} from '../../../utils/mixin';
 
 const prompt = Modal.prompt;
 const {urlCfg} = Configs;
-const {getUrlParam, isAndroid} = Utils;
+const {getUrlParam, isAndroid, appHistory} = Utils;
 
 export default class OrderDetail extends BaseComponent {
     constructor(props) {
@@ -167,6 +167,7 @@ export default class OrderDetail extends BaseComponent {
                     {
                         orderDetail.status > 2 && <Button className="btnStyle"><span onClick={this.goLogital}>物流详情</span><div className="wuliu-icon"/></Button>
                     }
+                    <Button className="btnStyle"><span onClick={this.goLogital}>物流详情</span><div className="wuliu-icon"/></Button>
                     {/* { // 二期功能 甘泽隆
                         orderDetail.status > 0 && orderDetail.status < 3 && <Button className="btnStyle"> <span onClick={this.writeOff}>核销订单</span></Button>
                     }

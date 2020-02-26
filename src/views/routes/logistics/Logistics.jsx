@@ -4,7 +4,7 @@
 import './Logistics.less';
 
 const {urlCfg} = Configs;
-const {getUrlParam} = Utils;
+const {getUrlParam, isAndroid} = Utils;
 
 export default class MyOrder extends BaseComponent {
     state = {
@@ -86,6 +86,15 @@ export default class MyOrder extends BaseComponent {
         });
     }
 
+    //联系电话
+    callNumber = (num) => {
+        if (isAndroid) {
+            window.android.callTel(num);
+        } else {
+            window.webkit.messageHandlers.callTel.postMessage(JSON.stringify(num));
+        }
+    }
+
     render() {
         const {orderInfo, slideShow} = this.state;
         return (
@@ -102,7 +111,7 @@ export default class MyOrder extends BaseComponent {
                             <p>订单状态</p>
                             <p>物流单号：{orderInfo.express_no}</p>
                         </div>
-                        <div className="item">
+                        <div className="item" onClick={() => this.callNumber(orderInfo.linktel)}>
                             <div><div className="phone-call"/></div>
                             <p>联系物流</p>
                         </div>

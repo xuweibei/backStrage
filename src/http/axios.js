@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {store} from '../redux/store';
 import {baseActionCreator as actionCreator} from '../redux/baseAction';
-import {showFail} from '../utils';
+import {showFail, isAndroid} from '../utils';
 
 const {CancelToken} = axios;
 const {appHistory} = Utils;
@@ -18,7 +18,11 @@ axios.interceptors.response.use(response => {
     if (response.data.status === 100 || response.data.status === 101) {
         showFail('登录过期');
         setTimeout(() => {
-            window.android.goLogin('');
+            if (isAndroid) {
+                window.android.goLogin('');
+            } else {
+                window.webkit.messageHandlers.goLogin.postMessage(JSON.stringify());
+            }
         }, 1000);
     }
     return response;

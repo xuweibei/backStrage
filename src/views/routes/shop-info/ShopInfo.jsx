@@ -30,7 +30,7 @@ export default class ShopInfo extends BaseComponent {
             {title: '店铺简介', value: shopInfo.intro},
             {title: '商家图册',
                 value:
-                    shopInfo.album && shopInfo.album.length > 0 && <div className="shop-img">{shopInfo.album.map((item, num) => <img key={item} style={num % 2 === 0 ? {marginRight: '0.16rem'} : ''} src={item} alt=""/>)}</div>,
+                    shopInfo.album && shopInfo.album.length > 0 && shopInfo.album.map((item, num) => <img key={item} style={num % 2 === 0 ? {marginRight: '0.16rem'} : {}} src={item} alt=""/>),
                 shopImg: true
             }
         ];
@@ -44,7 +44,7 @@ export default class ShopInfo extends BaseComponent {
                 shopInfoObj.map(item => (
                     <div className="shop-info-body-item" key={item.title}>
                         <span>{item.title}</span>
-                        {item.shopImg ? item.value : <span>{item.value}</span>}
+                        {item.shopImg ? <div className="shop-img">{item.value}</div> : <span>{item.value}</span>}
                     </div>
                 ))
             ) : (
