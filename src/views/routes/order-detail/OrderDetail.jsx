@@ -6,7 +6,7 @@ import {showInfo, showSuccess} from '../../../utils/mixin';
 
 const prompt = Modal.prompt;
 const {urlCfg} = Configs;
-const {getUrlParam, isAndroid, appHistory} = Utils;
+const {getUrlParam, isAndroid} = Utils;
 
 export default class OrderDetail extends BaseComponent {
     constructor(props) {
