@@ -86,7 +86,6 @@ export default class ShopInfo extends BaseComponent {
                    {
                        shopInfo.logo && <img src={shopInfo.logo} alt=""/>
                    }
-                   <img src="http://t8.baidu.com/it/u=3571592872,3353494284&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1583227287&t=a08a91edbc4b0f3e6535debe0c46ecc0"/>
                </div>
                <div className="shop-info">
                    <span className="shop-info-header">店铺信息</span>

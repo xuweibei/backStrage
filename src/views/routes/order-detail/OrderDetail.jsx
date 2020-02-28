@@ -154,7 +154,7 @@ export default class OrderDetail extends BaseComponent {
     }
 
     render() {
-        const {orderDetail} = this.state;
+        const {orderDetail, type} = this.state;
         return (
             <div className="order-detail-container">
                 <div className="order-detail-top pd-l-r-40">
@@ -165,9 +165,8 @@ export default class OrderDetail extends BaseComponent {
                         }
                     </div>
                     {
-                        orderDetail.status > 2 && <Button className="btnStyle"><span onClick={this.goLogital}>物流详情</span><div className="wuliu-icon"/></Button>
+                        type === '1' && orderDetail.status > 2 && <Button className="btnStyle"><span onClick={this.goLogital}>物流详情</span><div className="wuliu-icon"/></Button>
                     }
-                    <Button className="btnStyle"><span onClick={this.goLogital}>物流详情</span><div className="wuliu-icon"/></Button>
                     {/* { // 二期功能 甘泽隆
                         orderDetail.status > 0 && orderDetail.status < 3 && <Button className="btnStyle"> <span onClick={this.writeOff}>核销订单</span></Button>
                     }

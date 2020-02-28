@@ -41,10 +41,10 @@ export const fetch = (url, data = {}) => new Promise((resolve, reject) => {
             }
         }
         datas.append('userToken', window.localStorage.getItem('userToken'));
-        //第二种
-        for (const [a, b] of datas.entries()) {
-            console.log(a, b, '请求参数');
-        }
+        //第二种 //有兼容性，慎开 iphone6报错
+        // for (const [a, b] of datas.entries()) {
+        //     console.log(a, b, '请求参数');
+        // }
         axios.post(url, datas, {
             cancelToken: new CancelToken(((c) => {
                 source.cancel(c);
