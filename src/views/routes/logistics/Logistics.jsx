@@ -13,6 +13,7 @@ export default class MyOrder extends BaseComponent {
     }
 
     componentDidMount() {
+        document.title = '物流详情';
         this.getOrderInfo();
         this.initMap();
     }

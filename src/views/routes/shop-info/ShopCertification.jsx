@@ -11,6 +11,7 @@ export default class ShopCertification extends BaseComponent {
     }
 
     componentDidMount() {
+        document.title = '店铺认证';
         this.getCertification();
     }
 

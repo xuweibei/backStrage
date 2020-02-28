@@ -19,6 +19,7 @@ export default class OrderDetail extends BaseComponent {
     }
 
     componentDidMount() {
+        document.title = '订单详情';
         const {type} = this.state;
         if (type === '1') {
             this.getOrderDetail();
@@ -165,7 +166,7 @@ export default class OrderDetail extends BaseComponent {
                         }
                     </div>
                     {
-                        type === '1' && orderDetail.status > 2 && <Button className="btnStyle"><span onClick={this.goLogital}>物流详情</span><div className="wuliu-icon"/></Button>
+                        type === '1' &&  (orderDetail.status === 2 || orderDetail.status === 3 || orderDetail.status === 4) && <Button className="btnStyle"><span onClick={this.goLogital}>物流详情</span><div className="wuliu-icon"/></Button>
                     }
                     {/* { // 二期功能 甘泽隆
                         orderDetail.status > 0 && orderDetail.status < 3 && <Button className="btnStyle"> <span onClick={this.writeOff}>核销订单</span></Button>

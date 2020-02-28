@@ -10,6 +10,7 @@ export default class ShopInfo extends BaseComponent {
     }
 
     componentDidMount() {
+        document.title = '店铺信息';
         this.getShopInfo();
     }
 
