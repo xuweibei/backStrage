@@ -288,7 +288,7 @@ module.exports = (env = {}) => {
                 BaseComponent: [path.resolve(__dirname, ENTRYDIR + '/components/base/BaseComponent'), 'default'],
             }),
             new HtmlWebpackPlugin({
-                title: '商家助手',
+                title: '',
                 template: path.resolve(__dirname, ENTRYDIR + '/index.ejs'),
                 filename: 'index.html',
                 inject: false,

@@ -78,7 +78,7 @@ export default class ShopCertification extends BaseComponent {
                                 <div className="shop-info-photo ta-c pd-l-r-40">
                                     <div>
                                         <p className="sub-title">营业执照</p>
-                                        <img src={certificationInfo.logo} alt=""/>
+                                        <img src={certificationInfo.lic_img} alt=""/>
                                     </div>
                                     <div className="run-passion-container">
                                         <div className="run-passion-item">
