@@ -45,19 +45,19 @@ export default class ShopCertification extends BaseComponent {
                     <div className="document-info pd-l-r-40">
                         <div className="documemt-info-item">
                             <span>姓名</span>
-                            <span>{certificationInfo.mastar_name}1111</span>
+                            <span>{certificationInfo.mastar_name}</span>
                         </div>
                         <div className="documemt-info-item">
                             <span>身份证号</span>
-                            <span>{certificationInfo.idcard}222</span>
+                            <span>{certificationInfo.idcard}</span>
                         </div>
                         <div className="documemt-info-item">
                             <span>身份证有效期</span>
-                            <span>{certificationInfo.idcard_exp}333</span>
+                            <span>{certificationInfo.idcard_exp}</span>
                         </div>
                     </div>
                     {
-                        certificationInfo.cer_type === '1' && (
+                        (certificationInfo.cer_type === '1' || certificationInfo.cer_type === '3') && (
                             <Fragment>
                                 <div className="shop-certification-title ta-c">
                                     <h3>个体工商户证明材料</h3>
@@ -95,7 +95,7 @@ export default class ShopCertification extends BaseComponent {
                         )
                     }
                     {
-                        certificationInfo.cer_type !== '1'
+                        (certificationInfo.cer_type !== '1' && certificationInfo.cer_type !== '3')
                         && (
                             <Fragment>
                                 <div className="shop-certification-title ta-c">

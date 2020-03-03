@@ -90,9 +90,9 @@ export default class MyOrder extends BaseComponent {
     //联系电话
     callNumber = (num) => {
         if (isAndroid) {
-            window.android.callTel(num);
+            window.android.giveCall(num);
         } else {
-            window.webkit.messageHandlers.callTel.postMessage(JSON.stringify(num));
+            window.webkit.messageHandlers.giveCall.postMessage(JSON.stringify(num));
         }
     }
 
@@ -112,7 +112,7 @@ export default class MyOrder extends BaseComponent {
                             <p>订单状态</p>
                             <p>物流单号：{orderInfo.express_no}</p>
                         </div>
-                        <div className="item" onClick={() => this.callNumber(orderInfo.linktel)}>
+                        <div className="item" onClick={() => this.callNumber(orderInfo.phone)}>
                             <div><div className="phone-call"/></div>
                             <p>联系物流</p>
                         </div>

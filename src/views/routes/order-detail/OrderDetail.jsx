@@ -23,9 +23,7 @@ export default class OrderDetail extends BaseComponent {
         const {type} = this.state;
         if (type === '1') {
             this.getOrderDetail();
-            this.getOrderDetail();
         } else {
-            this.getSelfOrderDetail();
             this.getSelfOrderDetail();
         }
     }
